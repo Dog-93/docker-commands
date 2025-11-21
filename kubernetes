@@ -1,0 +1,123 @@
+kubectl version                   # Show client + server version
+kubectl cluster-info              # Show cluster info
+kubectl get all                   # Get all resources in the namespace
+#Working with pods
+kubectl get pods                  # List pods
+kubectl get pods -A               # List pods in all namespaces
+kubectl describe pod <pod>        # Detailed info
+kubectl logs <pod>                # View pod logs
+kubectl exec -it <pod> -- bash    # Enter inside pod
+#deployments
+kubectl get deployments
+kubectl create deployment nginx --image=nginx
+kubectl delete deployment <name>
+kubectl scale deployment <name> --replicas=3
+kubectl rollout status deployment/<name>
+kubectl rollout undo deployment/<name>
+#Services
+
+kubectl get svc                     # List services
+kubectl expose deployment nginx --type=NodePort --port=80
+kubectl describe svc <name>
+
+#Nmaespaces
+kubectl get ns
+kubectl create ns dev
+kubectl delete ns dev
+kubectl config set-context --current --namespace=dev
+
+#config maps & Secrets
+kubectl create configmap myconfig --from-literal=key=value
+kubectl get configmaps
+kubectl describe configmap myconfig
+
+#Secrets
+kubectl create secret generic mysecret --from-literal=user=admin
+kubectl get secrets
+kubectl describe secret mysecret
+
+#Nodes
+kubectl get nodes
+kubectl describe node <name>
+kubectl cordon <node>          # Mark node unschedulable
+kubectl drain <node> --force   # Evict pods
+kubectl uncordon <node>        # Make schedulable
+
+#Apply manage & Yaml files
+kubectl apply -f file.yaml
+kubectl delete -f file.yaml
+kubectl edit deployment <name>
+
+
+#Event & Trouble shooting
+kubectl get events
+kubectl describe pod <pod>
+kubectl logs <pod> --previous     # Logs of crashed container
+kubectl top pods                  # Resource usage
+kubectl top nodes
+
+#Cluster content
+kubectl config get-contexts
+kubectl config use-context <context>
+kubectl config current-context
+
+#Port farwarding
+kubectl port-forward <pod> 8080:80
+
+
+#Delete resorces
+kubectl delete pod <pod>
+kubectl delete svc <service>
+kubectl delete deployment <name>
+kubectl delete ns <namespace>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
