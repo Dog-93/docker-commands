@@ -1,0 +1,59 @@
+Docker commands
+docker --version      → Show Docker version
+docker info           → System info
+docker help           → Help menu
+docker images                 → List images
+docker pull <image>           → Download image
+docker build -t name .        → Build image from Dockerfile
+docker rmi <image_id>         → Remove image
+docker tag old new            → Rename/tag image
+docker history <image>        → Show image layers
+docker run <image>            → Run container
+docker run -it <image> bash   → Run with shell
+docker run -d <image>         → Run in background
+docker run -p 8080:80 image   → Map port (host:container)
+
+docker ps                     → Running containers
+docker ps -a                  → All containers
+
+docker stop <id>              → Stop container
+docker start <id>             → Start container
+docker restart <id>           → Restart container
+docker rm <id>                → Remove container
+
+docker logs <id>              → View logs
+docker exec -it <id> bash     → Enter live container
+docker volume create vol      → Create volume
+docker volume ls              → List volumes
+docker volume inspect vol     → Inspect
+docker volume rm vol          → Delete volume
+
+docker run -v vol:/data img   → Use volume in container
+docker network ls             → List networks
+docker network create net     → Create network
+docker network inspect net    → Inspect
+docker network rm net         → Remove
+docker run --network=net img  → Run container in network
+docker cp file.txt cID:/path  → Host → Container
+docker cp cID:/path/file .    → Container → Host
+docker system prune           → Remove unused containers/images
+docker rm $(docker ps -aq)    → Remove all containers
+docker rmi $(docker images -q)→ Remove all images
+docker system df              → Disk usage
+docker compose up -d          → Start all services
+docker compose down           → Stop & remove
+docker compose ps             → List services
+docker compose logs           → Show logs
+docker compose build          → Build services
+#FIles 10 we use more
+docker pull
+docker run
+docker ps
+docker exec -it <id> bash
+docker logs <id>
+docker stop <id>
+docker rm <id>
+docker build -t app .
+docker rmi <id>
+docker compose up -d
+
