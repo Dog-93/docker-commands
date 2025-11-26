@@ -1,0 +1,40 @@
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git config --list
+git init                    # Initialize a repo
+git clone <repo-url>        # Clone a repo
+git status                  # Show changes
+git add <file>              # Stage a file
+git add .                   # Stage all files
+git commit -m "message"     # Commit changes
+git commit --amend          # Edit last commit
+git branch                  # List branches
+git branch <name>           # Create a branch
+git checkout <name>         # Switch to branch
+git switch <name>           # Switch (newer command)
+git checkout -b <name>      # Create + switch
+git merge <branch>          # Merge branch into current
+git branch -d <name>        # Delete branch
+git remote -v               # Show remotes
+git remote add origin <url> # Add remote
+git push -u origin main     # Push first time
+git push                    # Push changes
+git pull                    # Pull changes
+git fetch                   # Fetch without merge
+git log                     # Detailed history
+git log --oneline           # One-line history
+git diff                    # Show unstaged changes
+git diff --staged           # Show staged changes
+git restore <file>              # Undo changes in working directory
+git restore --staged <file>     # Unstage a file
+git reset --hard HEAD           # Reset all changes
+git reset <commit>              # Move HEAD
+git revert <commit>             # Create new commit to undo
+git stash                    # Save work temporarily
+git stash list               # List stashes
+git stash apply              # Reapply stash
+git stash drop               # Delete stash
+git tag                      # List tags
+git tag <tagname>            # Create tag
+git push origin <tagname>    # Push tag
+git push --tags              # Push all tags
