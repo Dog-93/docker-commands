@@ -1,0 +1,316 @@
+
+                         AWS
+        
+                         IP Sub netting 
+Types of clouds
+⦁	Public cloud
+⦁	Private cloud
+⦁	Hybrid cloud        
+
+⦁	Network Basics
+⦁	IP Address and sub netting 
+
+IP address classify into five classes
+But we are using 3 classes
+
+IP Class A	1 to 126	               255.0.0.0
+IP Class B	128 to 191	255.255.0.0	
+IP Class C	192 to 223	255.255.255.0	
+
+⦁	Public IP Range
+Class A	1.0.0.0 to 127.0.0.0
+⦁	Private IP Range {Non routable-range} 
+10.0.0.0 to 10.255.255.255	255.0.0.0 	126	16,777,214
+==============================================================================
+⦁	public IP range
+Class B	128.0.0.0 to 191.255.0.0
+private IP range {Non routable-range}
+172.16.0.0 to 172.31.255.255	255.255.0.0	16,38265,534
+==============================================================================
+⦁	public IP range
+Class C	192.0.0.0 to 223.255.255.0
+⦁	private IP range {Non routable-range}
+192.168.0.0 to 192.168.255.255	255.255.255.0 	2,097,150254
+=============================================================================
+
+NAT {Network address translation}
+The private ip convert to public ip with the help of router through internet is NAT.
+The public is provided by ISP {INTERNET SERVICE PROVIDER}
+==============================================================================
+
+Sub netting process /subnet mask
+
+they are 8 bits 
+000 =1
+001 =2
+010 =4
+011 =8
+100 =16
+101 =32
+110 =64
+111 =128
+10.0.0.0 
+255.0.0.0 or /8 ->1.6 crores IPs
+10.1.0.0
+255.255.0.0 or /16 -> 65k IPs
+10.1.1.0 
+255.255.255.0 or 24 ->255 IPs
+
+If we want 17 sub net we add in below to in bits 128
+10.1.0.0
+255.255.128.0 or 17 32k
+255.255.192.0 or 18 16k
+255.255.224.0 or 19 8k
+255.255.240.0 or 20 4k
+255.255.248.0 or 21 2k
+255.255.252.0 or 22 1k
+255.255.254.0 or 23k 510
+255.255.255.0 or 24k 255
+========================================================================
+⦁	DATA Architecture
+⦁	Regions and availability zones
+
+⦁	VPC (Virtual Private Cloud)
+VPC creation and Sub net creation
+ 
+⦁	To create a VPC in AWS
+⦁	To create a VPC and give number to that we understand that.
+⦁	In the below CIDR the maximum is 16 and minimum is 24.
+⦁	Always we give 16
+⦁	Then we click on create VPC.
+⦁	In the backend created 
+⦁	Routing table
+⦁	Security Group
+⦁	NACL
+⦁	Internal Router
+⦁	VPC Internal Router
+
+⦁	VPC is always in only one region
+⦁	And we change our subnet to different in availability zones regions
+
+
+⦁	Internet gateway 
+⦁	Every VPC has Internet gate way.
+⦁	Create Internet gate way and there is option called attach VPC.
+⦁	Internet gate way is useful to connect to internet.
+⦁	Routes and Route Tables
+⦁	Every time when we create VPC automatically route tables is created.
+⦁	When we connect internet subnet the internal route is used.
+⦁	Otherwise we use 0.0.0.0/0 is add in the routes.
+⦁	And also we also create a route table and also we add subnets
+
+⦁	Security Group
+⦁	In VPC there is a default security group.
+⦁	And we also add security group.
+
+
+
+⦁	Public and private subnet
+⦁	If subnet connect to IGW is called public subnet.
+⦁	NAT Gate way
+⦁	When we connect private subnet to public subnet this process we NAT
+⦁	Then we allocate Elastic IP we have to create it.
+⦁	Then create a NAT gate way then attach public IP then create a NAT gate way
+⦁	Then change a routing table and changes routes and give 0.0.0.0./0 and NAT gate way
+Commands for connect through putty public IP with Private IP
+⦁	Nano pem file
+⦁	Then open that file in explorer and add in the file
+⦁	Chmod 400 pem file
+⦁	Ssh –I pem file ec2-user@private IP
+⦁	There we create elastic ip and also connect to nat network with use public ip.
+⦁	And also change routes on that private ip.
+⦁	And there we allocate Elastic ip and we connect with nat and there we give public IP.
+⦁	And we are also change nat route to allow all.  
+
+⦁	VPC Endpoints
+
+Gateway Endpoint
+
+⦁	A Gateway Endpoint is a gateway in your route table that is a target to a specified route for the required AWS service. The following AWS services are supported: Amazon S3
+
+
+⦁	Without Nat we also download from S3 and also without internet
+⦁	There we create a endpoint for s3 gate way and private subnet.
+⦁	Only for s3 and dynamo db. it supports
+⦁	And also it is a region base
+Interface endpoint
+Session manager
+⦁	It is like a putty bash like there is process how to keep we are also create a role.
+
+⦁	There is gateway endpoint for mostly private server to download file from AWS S3 service.
+⦁	And it also suitable for public IP.
+ 
+
+
+
+
+⦁	Session manager
+⦁	Like putty console for public Ip that is called session manager
+⦁	IAM
+⦁	Roles
+⦁	And give permission SSMF and ManagedInstance Core
+⦁	And after give name create that role
+⦁	After come to public instance and give right click security and add IAM modifier and just reboot the server.
+
+⦁	Same as for private server is different without public server  to download file from s3
+⦁	VPC interface Endpoint
+⦁	Ec2 messages
+⦁	Ssm
+⦁	Ssmmesaags
+⦁	There are lot of endpoint for services to check
+ 
+
+
+
+
+
+⦁	Firewall, security groups and Network ACL
+
+⦁	In Firewall there are Statefull Firewall and Stateless Firewall
+⦁	Security -> Statefull Firewall 
+⦁	Network ACL -> Stateless firewall (Applied on subnets)
+⦁	If there are two rules ->Outbound rules and Inbound rules in security Group
+ 
+
+
+⦁	 Network ACL -> It’s Is a stateless firewall
+⦁	We have to open both Inbound and Outbounds
+
+⦁	AWS network Firewall
+ 
+⦁	To stop the particular domains to stop in the server.
+⦁	With the tuple option you stop particular ip
+⦁	 Security -> Is applicable on instances levels
+⦁	Networks ACL -> is applicable on Subnets
+
+
+⦁	Virtual private network (VPN)
+⦁	There is a VPG is in AWS and VNG in Azure that are networks in clouds
+⦁	There is SITE-to-SITE VPN is to connect on-permises two machines on different clouds.
+⦁	To connect one cloud to another cloud Site-to-Site connection
+
+
+
+
+
+
+                                    EC2 INSTANCES
+
+⦁	There are two types of AMI (Amazon machine images)
+⦁	Amazon service AMI
+⦁	My AMI.
+⦁	There is option called placement when launch instance.
+⦁	It is used for to create all servers and do not sit at a hardware.
+⦁	Cloud watch
+CPU network utilisation
+
+⦁	Launch templates
+  
+⦁	With the templates we create machines at a time and with the help of scripting we create different server different subnets
+
+
+⦁	Spot Request
+Spot instances are used for servers not having data. That servers are must and should it is a test server.
+
+
+⦁	Elastic Block Store (EBS) or EBS volumes
+⦁	It’s a permanent storage
+⦁	Min IGB to max 16TB
+⦁	Available in SSD/HDD
+⦁	Can be attach and detach to different server
+⦁	Available for all machines
+⦁	Available with high IOPS
+⦁	Can we take snapshot and copy that to other regions?
+
+
+⦁	Instance store
+⦁	It’s a temporary Storage-Data will be lost if you shut down the server
+⦁	It’s a fixed size
+⦁	Its only available in SSD
+⦁	We cannot detach and attach this volume to other server.
+⦁	Only available for selected machines                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+
+⦁	AMI Automation using HashiCorp Packer.
+⦁	AWS Inspector -> Ec2 scanning tool for security vulnerabilities
+⦁	
+
+
+
+
+
+
+
+
+⦁	Load Balancers
+⦁	Regional Load balancer -> can be deployed on only on VPC
+⦁	Network Load balancer -> Layer 4 or L4 Load balancer  -> TCP & UDP
+⦁	Application Load balancer -> Layer 7 or L7 Load balancer -> HTTP & HTTPS
+⦁	Classic Load balancer
+⦁	Gateway Load balancer
+⦁	Global Load balancer
+⦁	AWS route 53
+⦁	AWS Global Accelerator.
+⦁	OSI Layers
+⦁	Application layer -> L7
+⦁	Presentation layer -> L6
+⦁	Session layer -> L5
+⦁	Transport layer -> L4
+⦁	Network layer -> L3
+⦁	Datalink layer -> L2
+⦁	Physical layer -> L1
+
+⦁	Network Load balancer
+⦁	Layer 4 or L4 ->  TCP & UDP
+
+
+
+
+
+⦁	Snapshots and Volumes
+⦁	Snapshot is backup and store the data and we also attach any instance with the help of create volumes.
+⦁	Commands 
+lsblk -> To see the volume attached
+ fdisk /dev/that disk name
+Mkfs.ext4 /dev/filename (xvdf1)
+vi /etc/fstab (/dev/xvdf1            /mydatavol/     ext4    defaults,noatime  1   1)
+df –h 
+Mount –a
+suppose we want to detach mount (umount vol name)
+
+
+
+
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
